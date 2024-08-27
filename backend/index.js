@@ -15,7 +15,7 @@
   app.use(parser.json());
   app.use(express.static('public'))
   app.use(cors({
-    origin: 'https://tahura.netlify.app' // Replace with your Angular app URL
+    origin: 'http://tahura.netlify.app' // Replace with your Angular app URL
   }));
 
   // MongoDB Connection using Mongoose
