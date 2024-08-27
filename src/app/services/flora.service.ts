@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class FloraService {
 
-  private baseUrl = 'http://localhost:4242';
+  private baseUrl = 'http://localhost:4200';
 
   constructor(private http: HttpClient) {}
 
