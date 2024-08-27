@@ -1,7 +1,7 @@
 // Tools
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors'); // Add this line
+const cors = require('cors');
 const parser = require('body-parser');
 
 // Schemas
@@ -11,14 +11,9 @@ const flora = require('../backend/schemas/flora');
 
 // Initializing 
 const app = express();
-
-// Configure CORS
-app.use(cors({
-  origin: 'http://localhost:4200' // Allow requests from your frontend's URL
-}));
-
+app.use(cors());
 app.use(parser.json());
-app.use(express.static('public'));
+app.use(express.static('public'))
 
 // MongoDB Connection using Mongoose
 mongoose.connect('mongodb+srv://TAHURA:TAHURA123@tahura.cjtoycf.mongodb.net/TAHURA', {
@@ -27,6 +22,7 @@ mongoose.connect('mongodb+srv://TAHURA:TAHURA123@tahura.cjtoycf.mongodb.net/TAHU
 })
 .then(() => console.log('MongoDB connected to database: TAHURA'))
 .catch(err => console.error('MongoDB connection error:', err));
+
 
 // Define routes
 app.get('/api/getFloraDetails/:id', async (req, res) => {

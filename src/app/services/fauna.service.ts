@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class FaunaService {
 
-  private baseUrl = 'http://localhost:4200';
+  private baseUrl = 'http://localhost:4242';
 
   constructor(private http: HttpClient) {}
 
