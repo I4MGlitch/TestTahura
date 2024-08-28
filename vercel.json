@@ -6,7 +6,7 @@
         "use": "@vercel/node"
       },
       {
-        "src": "dist/tahuraproject/**/*",
+        "src": "dist/tahuraproject",
         "use": "@vercel/static"
       }
     ],
