@@ -6,18 +6,18 @@
         "use": "@vercel/node"
       },
       {
-        "src": "dist/tahuraproject",
+        "src": "dist/tahuraproject/**/*",
         "use": "@vercel/static"
       }
     ],
     "routes": [
       {
-        "src": "/api/",
+        "src": "/api/(.*)",
         "dest": "/backend/index.js"
       },
       {
         "src": "/(.*)",
-        "dest": "/dist/tahuraproject"
+        "dest": "/dist/tahuraproject/$1"
       }
     ]
   }
