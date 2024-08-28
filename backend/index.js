@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser'); // Renamed parser to bodyParser for clarity
+const path = require('path'); // Required for path.join
 
 // Importing Schemas
 const Berita = require('../backend/schemas/berita');
@@ -13,7 +14,7 @@ const Flora = require('../backend/schemas/flora');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static('public')); // Serving static files
+app.use(express.static('public')); // Serving static files from the public directory
 
 // MongoDB Connection using Mongoose
 async function connectDB() {
@@ -29,6 +30,9 @@ async function connectDB() {
 }
 
 connectDB();
+
+// Serve Angular App
+app.use(express.static(path.join(__dirname, '../dist/tahuraproject')));
 
 // Define Routes
 app.get('/api/getFloraDetails/:id', async (req, res) => {
@@ -101,6 +105,11 @@ app.get('/api/getAllBerita', async (req, res) => {
     console.error('Error fetching berita data:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+});
+
+// Handle all other routes to serve Angular app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/tahuraproject/index.html'));
 });
 
 // Server Setup
